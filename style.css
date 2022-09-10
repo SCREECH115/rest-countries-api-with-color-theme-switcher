@@ -51,6 +51,10 @@ header button {
 }
 
 .filters {
+  display: none;
+}
+
+.filters.active {
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
@@ -83,7 +87,6 @@ li {
 
 li a {
   color: var(--color-text);
-
   text-decoration: none;
 }
 
