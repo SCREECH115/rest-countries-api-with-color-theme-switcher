@@ -14,6 +14,7 @@ export const renderDashboard = () => {
           capital: country.capital && country.capital[0],
           population: country.population.toLocaleString(),
           name: country.name.common,
+          code: country.cioc,
           region: country.region,
           flagUrl: country.flags.png,
         };
