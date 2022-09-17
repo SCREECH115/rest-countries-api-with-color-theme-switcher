@@ -64,51 +64,55 @@ const createListElement = (countries) => {
 };
 
 const createDetailElement = (country) => {
-  // capital: country.capital && country.capital[0],
-  // population: country.population.toLocaleString(),
-  // name: country.name.common,
-  // nativeName: country.name.nativeName,
-  // code: country.cioc,
-  // region: country.region,
-  // subregion: country.subregion,
-  // flagUrl: country.flags.png,
-  // currencies: country.currencies,
-  // languages: country.languages,
-  // tld: country.tld[0],
-
   const detailContainterElement = document.createElement("div");
 
   const flagImgElement = createFlagImgElement(country);
-  const detailgNameElement = document.createElement("strong");
-  detailgNameElement.innerText = country.name;
+  const detailContentElement = document.createElement("div");
+
+  detailContainterElement.classList.add("detail-container");
+  detailContainterElement.classList.add("detail-content");
+
+  const detailNameElement = document.createElement("strong");
+  detailNameElement.innerText = country.name;
+  detailNameElement.classList.add("detail-name");
 
   detailContainterElement.appendChild(flagImgElement);
-  detailContainterElement.appendChild(detailgNameElement);
+  detailContentElement.appendChild(detailNameElement);
 
-  detailContainterElement.appendChild(
+  const leftColumnElement = document.createElement("div");
+
+  leftColumnElement.appendChild(
     createInfoElement("Native name", country.nativeName)
   );
-  detailContainterElement.appendChild(
+  leftColumnElement.appendChild(
     createInfoElement("Population", country.population)
   );
-  detailContainterElement.appendChild(
-    createInfoElement("Region", country.region)
-  );
-  detailContainterElement.appendChild(
+  leftColumnElement.appendChild(createInfoElement("Region", country.region));
+  leftColumnElement.appendChild(
     createInfoElement("Sub region", country.subregion)
   );
-  detailContainterElement.appendChild(
-    createInfoElement("Capital", country.capital)
-  );
-  detailContainterElement.appendChild(
+  leftColumnElement.appendChild(createInfoElement("Capital", country.capital));
+
+  const rightColumnElement = document.createElement("div");
+
+  rightColumnElement.appendChild(
     createInfoElement("Top level domain", country.tld)
   );
-  detailContainterElement.appendChild(
+  rightColumnElement.appendChild(
     createInfoElement("Curriencies", country.currencies)
   );
-  detailContainterElement.appendChild(
+  rightColumnElement.appendChild(
     createInfoElement("Languages", country.languages)
   );
+
+  detailContentElement.appendChild(leftColumnElement);
+  detailContentElement.appendChild(rightColumnElement);
+
+  if (country.borders && country.borders.length > 0) {
+    detailContentElement.appendChild(createBorderCountriesContainer(country));
+  }
+
+  detailContainterElement.appendChild(detailContentElement);
 
   return detailContainterElement;
 };
@@ -116,17 +120,15 @@ const createDetailElement = (country) => {
 const createDetailButton = (text, link) => {
   const anchorElement = document.createElement("a");
   anchorElement.innerText = text;
-  anchorElement.classList.add("detail-back-link");
+  anchorElement.classList.add("detail-button");
   anchorElement.href = link;
 
   return anchorElement;
 };
 
-const createBorderContainer = (country) => {
-  if (country.borders || country.borders.length === 0) {
-    return;
-  }
+const createBorderCountriesContainer = (country) => {
   const borderCountriesContainerElement = document.createElement("div");
+  borderCountriesContainerElement.classList.add("border-countries-container");
   const labelElement = document.createElement("strong");
   labelElement.innerText = "Border Countries";
 
@@ -134,9 +136,11 @@ const createBorderContainer = (country) => {
 
   country.borders.forEach((border) => {
     borderCountriesContainerElement.appendChild(
-      createDetailButton("Border", "/?")
+      createDetailButton(border, `/?country=${border}`)
     );
   });
+
+  return borderCountriesContainerElement;
 };
 
 export const renderCountriesList = (countries) => {

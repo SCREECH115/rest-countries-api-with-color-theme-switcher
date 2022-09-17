@@ -7,3 +7,8 @@ if (window.location.search.includes("?country=")) {
   document.querySelector(".filters").classList.add("active");
   renderDashboard();
 }
+
+function darkMode() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}

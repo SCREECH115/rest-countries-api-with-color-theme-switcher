@@ -23,6 +23,11 @@ body {
   font-family: "Nunito Sans", sans-serif;
 }
 
+.dark-mode {
+  background-color: var(--very-dark-blue);
+  color: var(--white);
+}
+
 .filters,
 main {
   max-width: 1280px;
@@ -105,9 +110,57 @@ li img {
   margin-bottom: 10px;
 }
 
+.detail-button {
+  color: var(--color-text);
+  text-decoration: none;
+  background: transparent;
+  padding: 0px 30px;
+  margin: 5px 10px;
+  display: inline-block;
+  border: 1px solid var(--color-text);
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 29px -10px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 1px 1px 29px -10px rgba(66, 68, 90, 1);
+  box-shadow: 1px 1px 29px -10px rgba(66, 68, 90, 1);
+  transition: all 0.3s ease-in-out;
+}
+
+.detail-button:hover {
+  cursor: pointer;
+  background: black;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.detail-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 40px;
+}
+
+.detail-name {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.border-countries-container {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
 @media screen and (max-width: 1000px) {
   ul {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .detail-container,
+  .detail-content {
+    display: block;
   }
 }
 
