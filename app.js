@@ -8,7 +8,8 @@ if (window.location.search.includes("?country=")) {
   renderDashboard();
 }
 
-function darkMode() {
-  var element = document.body;
-  element.classList.toggle("dark-mode");
-}
+let darkMode = document.getElementById("darkModeBtn");
+
+darkMode.addEventListener("click", function () {
+  alert("In progress...");
+});

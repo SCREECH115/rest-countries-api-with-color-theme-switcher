@@ -10,25 +10,36 @@
     <script type="module" src="dom-utils.js" defer></script>
     <script type="module" src="view-dashboard.js" defer></script>
     <script type="module" src="view-detail.js" defer></script>
-    <script src="dark-mode.js" defer></script>
   </head>
   <body>
     <header>
       <div class="header-content">
-        <h1>Where in the world?</h1>
-        <button onclick="darkMode()">Dark mode</button>
+        <h1 class="title">WORLD COUNTRIES</h1>
+        <label class="switch">
+          <input type="checkbox" id="darkModeBtn" />
+          <span class="slider"></span>
+        </label>
       </div>
     </header>
     <div class="filters">
-      <input type="text" id="query" placeholder="Search for country..." />
-      <select name="name" id="region">
-        <option value="">Filter by Region</option>
-        <option value="Europe">Europe</option>
-        <option value="Americas">Americas</option>
-        <option value="Asia">Asia</option>
-        <option value="Africa">Africa</option>
-        <option value="Oceania">Oceania</option>
-      </select>
+      <div class="inputbox">
+        <input required="required" type="text" id="query" />
+        <span>Enter country here!</span>
+        <i></i>
+      </div>
+
+      <div class="selectdiv">
+        <label>
+          <select name="name" id="region">
+            <option value="" selected>Filter by region</option>
+            <option value="Europe">Europe</option>
+            <option value="Americas">Americas</option>
+            <option value="Asia">Asia</option>
+            <option value="Africa">Africa</option>
+            <option value="Oceania">Oceania</option>
+          </select>
+        </label>
+      </div>
     </div>
     <main id="root"></main>
   </body>
