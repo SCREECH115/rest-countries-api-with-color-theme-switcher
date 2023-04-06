@@ -69,6 +69,8 @@ const createDetailElement = (country) => {
   const flagImgElement = createFlagImgElement(country);
   const detailContentElement = document.createElement("div");
 
+  flagImgElement.classList.add("detail-img");
+
   detailContainterElement.classList.add("detail-container");
   detailContainterElement.classList.add("detail-content");
 
@@ -80,6 +82,7 @@ const createDetailElement = (country) => {
   detailContentElement.appendChild(detailNameElement);
 
   const leftColumnElement = document.createElement("div");
+  leftColumnElement.classList.add("detail-details");
 
   leftColumnElement.appendChild(
     createInfoElement("Native name", country.nativeName)
@@ -130,13 +133,14 @@ const createBorderCountriesContainer = (country) => {
   const borderCountriesContainerElement = document.createElement("div");
   borderCountriesContainerElement.classList.add("border-countries-container");
   const labelElement = document.createElement("strong");
+  labelElement.classList.add("detail-borders");
   labelElement.innerText = "Border Countries";
 
   borderCountriesContainerElement.appendChild(labelElement);
 
   country.borders.forEach((border) => {
     borderCountriesContainerElement.appendChild(
-      createDetailButton(border, `/?country=${border}`)
+      createDetailButton(border, `./?country=${border}`)
     );
   });
 
@@ -152,6 +156,6 @@ export const renderCountriesList = (countries) => {
 export const renderCountryDetails = (country) => {
   const rootElement = document.querySelector("#root");
   rootElement.innerHTML = "";
-  rootElement.appendChild(createDetailButton("Go back", "/"));
+  rootElement.appendChild(createDetailButton("Go back", "./"));
   rootElement.appendChild(createDetailElement(country));
 };
