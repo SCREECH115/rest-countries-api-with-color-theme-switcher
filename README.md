@@ -16,9 +16,14 @@ https://restcountries.com/v3.1/all
 By clicking on a given country, a subpage with details about a given country will be displayed, such as:
 
 - name
-- currency
-- language
-- and much more
+- native name
+- population
+- region
+- sub region
+- capital
+- top level domain
+- curriencies
+- languages
 
 In addition, the neighbors to which we can go from the level of the country we are currently viewing are also displayed.
 
